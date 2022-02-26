@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "2c5889cc-03e5-498e-9ac4-74508b057d06",
+		"name": "101094358_comp3133_assig1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search Listing By Name",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    searchListingByName(listing_title: \"new condo for rent\") {\r\n        id\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new User Profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n  createUserbyAdmin(\r\n    username: \"jacktanloi\",\r\n    firstname: \"Jack Tan Loi\",\r\n    lastname: \"Ngo\",\r\n    password: \"admin123\",\r\n    email: \"jacktanloi.ngo@georgebrown.ca\",\r\n    type: \"admin\"\r\n  ){\r\n    id\r\n    username\r\n    firstname\r\n    lastname\r\n    password\r\n    email\r\n    type\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    login(\r\n        username: \"tanloi\",\r\n        password: \"admin123\"\r\n    ){\r\n        role\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new listing by Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n    createNewListingbyAdmin(\r\n        listing_id: \"L001\",\r\n        listing_title: \"new condo for rent\",\r\n        description: \"Good location in downtown Toronto\",\r\n        street: \"200 York st\",\r\n        city: \"Toronto\",\r\n        postal_code: \"M5A 2H2\",\r\n        price: 2000.0\r\n        email: \"tanloi.ngo@georgebrown.ca\",\r\n        username: \"tanloi\",\r\n        role: \"admin\"\r\n    ) {\r\n    id\r\n    listing_id\r\n    listing_title\r\n    description\r\n    street\r\n    city\r\n    postal_code\r\n    price\r\n    email\r\n    username\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View all listings created by Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    ViewAllListingsbyAdmin(role: \"admin\", username: \"tanloi\") {\r\n        id\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    } \r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Booking as a User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n    createNewBookingByUser(\r\n        listing_id: \"L001\",\r\n        booking_id: \"B001\",\r\n        booking_start: \"03-05-2022\",\r\n        booking_end: \"03-15-2022\",\r\n        username: \"jackngo\",\r\n        role: \"user\",\r\n    ) {\r\n    id\r\n    listing_id\r\n    booking_id\r\n    booking_start\r\n    booking_end\r\n    booking_end\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Searching Listing by Name",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    searchListingByName(listing_title: \"new condo for rent\") {\r\n        id\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Searching Listing by City",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "\r\nquery {\r\n    searchListingByCity(city: \"Toronto\") {\r\n        id\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Searching Listing by PostalCode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "\r\nquery {\r\n    searchListingByPostalCode(postal_code: \"m5a 2h2\") {\r\n        id\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View All Bookings as User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    ViewAllBookingsByUser(role: \"user\", username:\"jackngo\") {\r\n        id\r\n        listing_id\r\n        booking_id\r\n        booking_date\r\n        booking_start\r\n        booking_end\r\n        username\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    login(\r\n        username: \"jackngo\",\r\n        password: \"user123\"\r\n    ){\r\n        role\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

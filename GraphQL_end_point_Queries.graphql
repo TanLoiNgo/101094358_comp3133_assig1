@@ -1,0 +1,153 @@
+#Task 01: Create a new User Profile
+mutation {
+  createUserbyAdmin(
+    username: "jacktanloi",
+    firstname: "Jack Tan Loi",
+    lastname: "Ngo",
+    password: "admin123",
+    email: "jacktanloi.ngo@georgebrown.ca",
+    type: "admin"
+  ){
+    id
+    username
+    firstname
+    lastname
+    password
+    email
+    type
+  }
+}
+
+#Task 2: Login API – Pass the username and password to validate the user to allow
+booking of any listing (both user and admin) (Optional: implement JWT token)
+query {
+    login(
+        username: "tanloi",
+        password: "admin123"
+    ){
+        role
+    }
+}
+
+#Task 3: Create a new listing (Admin) (validate All fields are mandatory)
+mutation {
+    createNewListingbyAdmin(
+        listing_id: "L001",
+        listing_title: "new condo for rent",
+        description: "Good location in downtown Toronto",
+        street: "200 York st",
+        city: "Toronto",
+        postal_code: "M5A 2H2",
+        price: 2000.0
+        email: "tanloi.ngo@georgebrown.ca",
+        username: "tanloi",
+        role: "admin"
+    ) {
+    id
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+    }
+}
+
+#Task 4: View all listings created by Admin and Task 8. View all listing added by Admin user (Only when logged in as Admin)
+
+query {
+    ViewAllListingsbyAdmin(role: "admin", username: "tanloi") {
+        id
+        listing_id
+        listing_title
+        description
+        street
+        city
+        postal_code
+        price
+        email
+        username
+    } 
+}
+
+#Task 5: Book listings as a User
+mutation {
+    createNewBookingByUser(
+        listing_id: "L001",
+        booking_id: "B001",
+        booking_start: "03-05-2022",
+        booking_end: "03-15-2022",
+        username: "jackngo",
+        role: "user",
+    ) {
+    id
+    listing_id
+    booking_id
+    booking_start
+    booking_end
+    booking_end
+    }
+}
+
+#Task 6. Search listing by • Name • City • Postal code
+query {
+    searchListingByName(listing_title: "new condo for rent") {
+        id
+        listing_id
+        listing_title
+        description
+        street
+        city
+        postal_code
+        price
+        email
+        username
+    }
+}
+
+query {
+    searchListingByCity(city: "Toronto") {
+        id
+        listing_id
+        listing_title
+        description
+        street
+        city
+        postal_code
+        price
+        email
+        username
+    }
+}
+
+query {
+    searchListingByPostalCode(postal_code: "m5a 2h2") {
+        id
+        listing_id
+        listing_title
+        description
+        street
+        city
+        postal_code
+        price
+        email
+        username
+    }
+}
+
+#Task 7. List all User bookings (Only when logged in as User)
+query {
+    ViewAllBookingsByUser(role: "user", username:"jackngo") {
+        id
+        listing_id
+        booking_id
+        booking_date
+        booking_start
+        booking_end
+        username
+  }
+}
+
